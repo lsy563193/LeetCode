@@ -7,6 +7,7 @@
 using namespace std;
 
 #include "twoSum.cpp"
+//#include "twoSum.II.cpp"
 
 
 TEST(twoSum, Solution)
@@ -39,7 +40,7 @@ TEST(twoSum, Solution)
 
 TEST(twoSum, time)
 {
-    vector<int> num(20000);
+    vector<int> num(10000000);
     Solution solution;
     auto target = 23;
     auto start = chrono::system_clock::now();
