@@ -13,7 +13,7 @@
 * You may assume that each input would have exactly one solution.
 * 
 * Input: numbers={2, 7, 11, 15}, target=9
-* Output: index1=1, index2=2
+* Output: index1=0, index2=1
 * 
 *               
 **********************************************************************************/
@@ -59,8 +59,8 @@ public:
                 m[target - numbers[i]] = i; 
             }else { 
                 // found the second one
-                result.push_back(m[numbers[i]]+1);
-                result.push_back(i+1);
+                result.push_back(m[numbers[i]]);
+                result.push_back(i);
                 break;
             }
         }
@@ -68,17 +68,17 @@ public:
     }
 
     // we also can store nums[i] into map, and find target - nums[i]
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> m;
-        vector<int> result;
-        for (int i=0; i<nums.size(); i++) {
-            if ( m.find(target - nums[i]) == m.end() ) {
-                m[nums[i]] = i;
-            }else{
-                result.push_back(m[target - nums[i]]);
-                result.push_back(i);
-            }
-        }
-        return result;
-    }
+//    vector<int> twoSum(vector<int>& nums, int target) {
+//        unordered_map<int, int> m;
+//        vector<int> result;
+//        for (int i=0; i<nums.size(); i++) {
+//            if ( m.find(target - nums[i]) == m.end() ) {
+//                m[nums[i]] = i;
+//            }else{
+//                result.push_back(m[target - nums[i]]);
+//                result.push_back(i);
+//            }
+//        }
+//        return result;
+//    }
 };
