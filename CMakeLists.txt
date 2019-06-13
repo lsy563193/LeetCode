@@ -20,3 +20,7 @@ target_link_libraries(leetcode ${GMOCK_LIBRARIES})
 add_executable(leetcode_insert_sort
         algorithms/cpp/insertionSortList/insertionSortList_test.cpp)
 target_link_libraries(leetcode_insert_sort ${GMOCK_LIBRARIES})
+
+add_executable(leetcode_insert_std
+        algorithms/cpp/std_algo_test.cpp)
+target_link_libraries(leetcode_insert_std ${GMOCK_LIBRARIES})
