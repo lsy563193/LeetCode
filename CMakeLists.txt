@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10.2)
 project(leetcode)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 include("${PROJECT_SOURCE_DIR}/cmake/functions.cmake")
 google_initialize_cartographer_project()

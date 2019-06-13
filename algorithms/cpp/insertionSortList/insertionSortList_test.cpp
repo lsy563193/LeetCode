@@ -89,7 +89,11 @@ void insert_sort(InputIterator first, InputIterator last){
 template<class RandomAccessRange>
 inline RandomAccessRange& insert_sort(RandomAccessRange& rng)
 {
-    insert_sort(boost::begin(rng), boost::end(rng));
+//    insert_sort(boost::begin(rng), boost::end(rng));
+    list<int> l;
+    for_each(rng,[&](auto& first){
+        return l.insert(lower_bound(l,*first),*first);
+    });
     return rng;
 }
 
