@@ -69,7 +69,7 @@ ListNode* createList(int a[], int n)
 template <typename InputIterator>
 void select_sort(InputIterator first, InputIterator last){
     for(;first !=last; ++first)
-        swap(*first, *min_element(first, last));
+        iter_swap(first, min_element(first, last));
 }
 
 template<class RandomAccessRange>
@@ -79,6 +79,7 @@ inline RandomAccessRange& select_sort(RandomAccessRange& rng)
     return rng;
 }
 template <typename InputIterator>
+
 void insert_sort(InputIterator first, InputIterator last){
     list<int> l;
     auto tmp = first;
@@ -89,11 +90,35 @@ void insert_sort(InputIterator first, InputIterator last){
 template<class RandomAccessRange>
 inline RandomAccessRange& insert_sort(RandomAccessRange& rng)
 {
-//    insert_sort(boost::begin(rng), boost::end(rng));
-    list<int> l;
-    for_each(rng,[&](auto& first){
-        return l.insert(lower_bound(l,*first),*first);
-    });
+    insert_sort(boost::begin(rng), boost::end(rng));
+//    list<int> l;
+//    for_each(rng,[&](auto& first){
+//        return l.insert(lower_bound(l,*first),*first);
+//    });
+    return rng;
+}
+// deque<int> v{1,2,1,8,4,10,5,8};
+template <typename InputIterator>
+void bubble_sort(InputIterator first, InputIterator last){
+    auto tmp = first;
+    for(; first != last-1; ++first)
+    {
+        for(auto l = first; l != last-1; ++l)
+        {
+            if(*l > *(l+1))
+                iter_swap(l,l+1);
+        }
+    }
+//    copy(v, tmp);
+}
+template<class RandomAccessRange>
+inline RandomAccessRange& bubble_sort(RandomAccessRange& rng)
+{
+    bubble_sort(boost::begin(rng), boost::end(rng));
+//    list<int> l;
+//    for_each(rng,[&](auto& first){
+//        return l.insert(lower_bound(l,*first),*first);
+//    });
     return rng;
 }
 
@@ -108,6 +133,17 @@ TEST(insertion, test1)
     deque<int> v{1,2,1,8,4,10,5,8};
     insert_sort(v);
     ASSERT_THAT(v,testing::ContainerEq(deque<int>{1,1,2,4,5,8,8,10}));
-
 //    delete[] a;
+}
+TEST(bubble_sort, test1) {
+    vector<int> v{1,2,1,8,4,10,5,8};
+    bubble_sort(v);
+    ASSERT_THAT(v,testing::ContainerEq(vector<int>{1,1,2,4,5,8,8,10}));
+}
+
+TEST(bubble_sort, adjacent_difference) {
+    vector<int> v{1,2,1,8,4,10,5,8};
+    adjacent_difference(v.begin(),v.end(), v.begin());
+    copy(v, ostream_iterator<int>(cout, ", "));
+    cout << endl;
 }
